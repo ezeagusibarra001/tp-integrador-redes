@@ -1,0 +1,38 @@
+0. Interfaces internas y externas
+
+Router(config)#interface FastEthernet0/0
+
+Router(config-if)# ip address 172.1.29.1 255.255.254.0
+
+Router(config-if)# ip nat inside
+Router(config-if)# exit
+
+Router(config)#interface Serial2/0
+Router(config-if)# ip address 205.32.130.2 255.255.255.252
+Router(config-if)# ip nat outside
+Router(config-if)# exit
+
+
+1. Crear Pool de Ips
+
+Router(config)#
+ip nat pool POOL-NAT-FAMA 200.45.110.129 200.45.110.254 netmask 255.255.255.128
+
+-------------------------------------------------
+
+2. Crear Access List
+Router(config)# 
+access-list 1 permit 172.1.29.0 0.0.1.255
+-------------------------------------------------
+comando     id comando ip privada wildcard
+
+-------------------------------------------------
+
+3. Vincular Pool con Access List
+
+Router(config)# 
+ip nat inside source list 1 pool POOL-NAT-FAMA overload
+
+-------------------------------------------------
+
+

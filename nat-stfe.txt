@@ -1,0 +1,19 @@
+0. Interfaces internas y externas
+
+Router(config)#interface FastEthernet5/0
+
+Router(config-if)# ip address 10.68.14.5 255.255.255.252 //TRANSPORTE
+
+Router(config-if)# ip nat inside
+Router(config-if)# exit
+
+-------------------------------------------------
+
+2. Crear Access List
+Router(config)# 
+access-list 1 permit 10.68.14.64 0.0.0.63
+-------------------------------------------------
+comando     id comando ip privada wildcard
+
+
+
